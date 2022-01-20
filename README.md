@@ -1,20 +1,22 @@
 # AcmeTravelPocMulesoft
 
-## Mulesoft Project consuming ACME_Travel_POC API
+## Mulesoft Project
 
 The mule project is configured to listen on the machine's localhost:8081
 
+The below requests can be sent to consume the ACME_Travel_POC
+
 getDestinationAirports
-/destinationAirports/{pageNo}/{pageSize}/{name}
+http://localhost:8081/destinationAirports/{pageNo}/{pageSize}/{name}
 
 getFlightListByDate
-/getFlights/{depDate}
+http://localhost:8081/getFlights/{depDate}
 
 simulateSeatPurchase
-/simulateTicketPurchase/{flightId}/{depDate}
+http://localhost:8081/simulateTicketPurchase/{flightId}/{depDate}
 
 simulateNewSeatPrice
-/amendFlightPrice/{flightId}/{depDate}/{newFlightPrice}
+http://localhost:8081/amendFlightPrice/{flightId}/{depDate}/{newFlightPrice}
 
 acmeTravelFlow
-/insertNewFlight/{airlineId}/{sourceAirportId}/{destinationAirportId}/{departureDate}/{seatAvailability}/{price}
+http://localhost:8081/insertNewFlight/{airlineId}/{sourceAirportId}/{destinationAirportId}/{departureDate}/{seatAvailability}/{price}
