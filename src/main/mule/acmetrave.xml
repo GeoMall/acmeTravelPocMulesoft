@@ -13,9 +13,9 @@ http://www.mulesoft.org/schema/mule/sockets http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="getDestinationAirports" doc:id="35876434-29d2-4ee9-92bf-9a5522c02618" >
 		<http:listener doc:name="Listener" doc:id="dd154b47-9cb1-4bb1-b6a8-81f468f8e4b8" config-ref="HTTP_Listener_config" path="/destinationAirports/{pageNo}/{pageSize}/{name}"/>
-		<set-variable value="#[attributes.uriParams.pageNo]" doc:name="Set Variable" doc:id="91db54a9-efd6-4f2f-8d5b-bf965a93550d" variableName="pageNo" />
-		<set-variable value="#[attributes.uriParams.pageSize]" doc:name="Set Variable" doc:id="1a98e9af-0c43-474d-a90b-28504aa2f396" variableName="PageSize" />
-		<set-variable value="#[attributes.uriParams.name]" doc:name="Set Variable" doc:id="06286f8a-bc3b-4a6d-98c8-1f45f174ec91" variableName="airlineName"/>
+		<set-variable value="#[attributes.uriParams.pageNo]" doc:name="pageNo" doc:id="91db54a9-efd6-4f2f-8d5b-bf965a93550d" variableName="pageNo" />
+		<set-variable value="#[attributes.uriParams.pageSize]" doc:name="PageSize" doc:id="1a98e9af-0c43-474d-a90b-28504aa2f396" variableName="PageSize" />
+		<set-variable value="#[attributes.uriParams.name]" doc:name="airlineName" doc:id="06286f8a-bc3b-4a6d-98c8-1f45f174ec91" variableName="airlineName"/>
 		<http:request method="GET" doc:name="Request" doc:id="b9a1330f-06cc-494e-af0d-62a3fd83209b" config-ref="HTTP_Request_configuration" path='#["destinationAirports/?pageNo=" ++ vars.pageNo ++ "&amp;pageSize=" ++ vars.PageSize ++ "&amp;airlineName=" ++ vars.airlineName]'>
 			<http:uri-params ><![CDATA[#[output application/java
 ---
@@ -26,23 +26,23 @@ http://www.mulesoft.org/schema/mule/sockets http://www.mulesoft.org/schema/mule/
 	</flow>
 	<flow name="getFlightListByDate" doc:id="a15a197d-c19a-4eaa-bf58-a49b2d2cbb65" >
 		<http:listener doc:name="Listener" doc:id="45eef6f7-4423-4fb6-b518-783e3a6be10a" config-ref="HTTP_Listener_config" path="/getFlights/{depDate}"/>
-		<set-variable value="#[attributes.uriParams.depDate]" doc:name="Set Variable" doc:id="43106174-9f19-4981-8408-10f0aa574874" variableName="depDate"/>
+		<set-variable value="#[attributes.uriParams.depDate]" doc:name="depDate" doc:id="43106174-9f19-4981-8408-10f0aa574874" variableName="depDate"/>
 		<http:request method="GET" doc:name="Request" doc:id="4ef4d5d9-9ab3-4c49-af3a-7d2fbbfc0583" config-ref="HTTP_Request_configuration" path='#["/flights/?depDate=" ++ vars.depDate]'/>
 	</flow>
 	<flow name="simulateSeatPurchase" doc:id="b00df1e2-b2c2-41d1-b2bb-fb261316f391" >
 		<http:listener doc:name="Listener" doc:id="f60692ac-d148-4a04-a92a-cdc5c5040700" config-ref="HTTP_Listener_config" path="/simulateTicketPurchase/{flightId}/{depDate}"/>
-		<set-variable value="#[attributes.uriParams.depDate]" doc:name="Set Variable" doc:id="b5a8f0c6-62f2-4c56-94f0-2c0ece1b6531" variableName="departureDate"/>
-		<set-variable value="#[attributes.uriParams.flightId]" doc:name="Set Variable" doc:id="2666a9f3-6980-402d-96ca-48eb8876afac" variableName="flightId"/>
+		<set-variable value="#[attributes.uriParams.depDate]" doc:name="departureDate" doc:id="b5a8f0c6-62f2-4c56-94f0-2c0ece1b6531" variableName="departureDate"/>
+		<set-variable value="#[attributes.uriParams.flightId]" doc:name="flightId" doc:id="2666a9f3-6980-402d-96ca-48eb8876afac" variableName="flightId"/>
 		<http:request method="PATCH" doc:name="Request" doc:id="cca6e25b-6272-44b4-ac4f-e32845a87bd0" config-ref="HTTP_Request_configuration" path='#["/simulateTicketPurchase/?flightId=" ++ vars.flightId ++ "&amp;departureDate=" ++ vars.departureDate]'/>
 	</flow>
 	<flow name="simulateNewSeatPrice" doc:id="37a78369-9204-40f0-83ff-8c8f565003af" >
 		<http:listener doc:name="Listener" doc:id="48e30309-d5e1-4641-b13f-1a49d0fbe933" config-ref="HTTP_Listener_config" path="/amendFlightPrice/{flightId}/{depDate}/{newFlightPrice}"/>
-		<set-variable value="#[attributes.uriParams.flightId]" doc:name="Set Variable" doc:id="dffbdcc3-2f08-4d54-982b-4a9decbf61ac" variableName="flightId"/>
-		<set-variable value="#[attributes.uriParams.depDate]" doc:name="Set Variable" doc:id="12295fe7-734a-4db5-a037-53b8fb59923b" variableName="depDate"/>
-		<set-variable doc:name="Set Variable" doc:id="69328ffa-19e5-4c61-9304-c7a37f9cebf4" variableName="newFlightPrice" value="#[attributes.uriParams.newFlightPrice]"/>
+		<set-variable value="#[attributes.uriParams.flightId]" doc:name="flightId" doc:id="dffbdcc3-2f08-4d54-982b-4a9decbf61ac" variableName="flightId"/>
+		<set-variable value="#[attributes.uriParams.depDate]" doc:name="depDate" doc:id="12295fe7-734a-4db5-a037-53b8fb59923b" variableName="depDate"/>
+		<set-variable doc:name="newFlightPrice" doc:id="69328ffa-19e5-4c61-9304-c7a37f9cebf4" variableName="newFlightPrice" value="#[attributes.uriParams.newFlightPrice]"/>
 		<http:request method="PATCH" doc:name="Request" doc:id="797e93de-1015-4605-bf31-f953a2b32fec" config-ref="HTTP_Request_configuration" path='#["/amendFlightPrice/?flightId=" ++ vars.flightId ++ "&amp;departureDate=" ++ vars.depDate ++ "&amp;newFlightPrice=" ++ vars.newFlightPrice]'/>
 	</flow>
-	<flow name="acmetraveFlow" doc:id="9a7578ea-1c20-4ddb-a915-a5bcc0f11ac4" >
+	<flow name="insertNewFlight" doc:id="9a7578ea-1c20-4ddb-a915-a5bcc0f11ac4" >
 		<http:listener doc:name="Listener" doc:id="f4aa0fb6-9784-470e-970e-6f8c8b01fd77" config-ref="HTTP_Listener_config" path="/insertNewFlight/{airlineId}/{sourceAirportId}/{destinationAirportId}/{departureDate}/{seatAvailability}/{price}"/>
 		<set-variable value="#[attributes.uriParams.airlineId]" doc:name="airlineId" doc:id="ad9f64be-c8a8-41da-bed8-7b6d9535654b" variableName="airlineId"/>
 		<set-variable value="#[attributes.uriParams.sourceAirportId]" doc:name="sourceAirportId" doc:id="aa6f6304-4a52-4afe-ab3b-b2f9baf33d9a" variableName="sourceAirportId"/>
