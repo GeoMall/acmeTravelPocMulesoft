@@ -18,5 +18,5 @@ This flow sends a request to the ACME Travel API by consuming the patch method `
 ### simulateNewSeatPrice
 This flow sends a request to the ACME Travel API by consuming the patch method  `amceTravel/amendFlightPrice`. This flow is invoked when the link `http://localhost:8081/amendFlightPrice/{flightId}/{depDate}/{newFlightPrice}` is accessed. It needs the flight Id, departure date, in the form of *yyyy-MM-dd HH:mm:ss* or *yyyy-MM-dd* patterns, and the new flight price to be passed to change the seat price of that particular flight.
 
-### acmeTravelFlow
+### insertNewFlight
 This flow sends a request to the ACME Travel API by consuming the post method `amceTravel/insertNewFlight`. This flow is invoked when the link `http://localhost:8081/insertNewFlight/{airlineId}/{sourceAirportId}/{destinationAirportId}/{departureDate}/{seatAvailability}/{price}` is accessed. It needs the airline Id, source airport Id, destination airport Id, departure date, in the form of *yyyy-MM-dd HH:mm:ss* or *yyyy-MM-dd* patterns, seat availability and price to be passed to create a new flight.
